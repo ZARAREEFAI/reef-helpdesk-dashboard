@@ -1,0 +1,25 @@
+{
+  "lastUpdated": "2026-02-14T23:04:00Z",
+  "stats": {
+    "created14d": 0,
+    "resolved14d": 0,
+    "actionable": 0,
+    "pendingOnHold": 0
+  },
+  "trend": {
+    "labels": [],
+    "created": [],
+    "resolved": []
+  },
+  "statusBreakdown": {
+    "pendingCustomer": 0,
+    "onHold": 0,
+    "open": 0,
+    "workInProgress": 0
+  },
+  "workload": {
+    "count": 0,
+    "level": "INITIALIZING",
+    "color": "green"
+  }
+}

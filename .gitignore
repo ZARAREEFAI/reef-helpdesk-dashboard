@@ -1,0 +1,22 @@
+# Credentials - never commit
+*.env
+.env*
+.credentials/
+credentials/
+
+# Scripts that may contain paths
+*.sh
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log

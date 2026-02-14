@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Helpdesk Dashboard | Reef CP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: white;
+            padding: 2rem;
+        }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #e94560, #f39c12, #e94560);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+        .header .subtitle { font-size: 1rem; opacity: 0.7; }
+        @keyframes shine { to { background-position: 200% center; } }
+        .dashboard { max-width: 1600px; margin: 0 auto; }
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chart-title { font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.9; }
+        .main-row { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .status-section { display: flex; gap: 1.5rem; align-items: center; height: 100%; }
+        .donut-container { flex: 1; max-width: 280px; }
+        .workload-gauge {
+            flex: 0 0 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .workload-gauge h3 { font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+        .workload-indicator {
+            width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 0.75rem;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            font-size: 2rem; font-weight: bold;
+            transition: all 0.5s ease;
+        }
+        .workload-indicator.green { background: linear-gradient(135deg, #00b894, #00cec9); box-shadow: 0 0 40px #00b894; }
+        .workload-indicator.yellow { background: linear-gradient(135deg, #fdcb6e, #f39c12); box-shadow: 0 0 40px #f39c12; }
+        .workload-indicator.orange { background: linear-gradient(135deg, #e17055, #d63031); box-shadow: 0 0 40px #e17055; }
+        .workload-indicator.red { background: linear-gradient(135deg, #d63031, #c0392b); box-shadow: 0 0 40px #d63031; }
+        .workload-indicator span { color: white; }
+        .workload-label { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; transition: all 0.3s ease; }
+        .workload-detail { font-size: 0.75rem; opacity: 0.7; }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px; padding: 1.5rem; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card .number { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.25rem; transition: all 0.3s ease; }
+        .stat-card .label { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-card.created .number { color: #74b9ff; }
+        .stat-card.resolved .number { color: #00b894; }
+        .stat-card.open .number { color: #fdcb6e; }
+        .stat-card.pending .number { color: #a29bfe; }
+        .footer { text-align: center; margin-top: 2rem; opacity: 0.5; font-size: 0.8rem; }
+        .updated-time { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; }
+        .refresh-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00b894;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .loading { opacity: 0.5; }
+        @media (max-width: 1200px) {
+            .main-row { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .stats-row { grid-template-columns: 1fr; }
+            body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>⚡ IT Helpdesk Dashboard</h1>
+            <p class="subtitle">Reef Capital Partners</p>
+            <p class="updated-time"><span class="refresh-indicator"></span>Last updated: <span id="lastUpdated">Loading...</span></p>
+        </div>
+        <div class="stats-row">
+            <div class="stat-card created"><div class="number" id="created14d">--</div><div class="label">Created (14d)</div></div>
+            <div class="stat-card resolved"><div class="number" id="resolved14d">--</div><div class="label">Resolved (14d)</div></div>
+            <div class="stat-card open"><div class="number" id="actionable">--</div><div class="label">Actionable</div></div>
+            <div class="stat-card pending"><div class="number" id="pendingOnHold">--</div><div class="label">Pending / On Hold</div></div>
+        </div>
+        <div class="main-row">
+            <div class="chart-container">
+                <h2 class="chart-title">📈 Tickets Opened vs Resolved (Past 2 Weeks)</h2>
+                <canvas id="trendChart" height="85"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2 class="chart-title">📊 Current Status</h2>
+                <div class="status-section">
+                    <div class="donut-container"><canvas id="statusChart"></canvas></div>
+                    <div class="workload-gauge">
+                        <h3>Workload</h3>
+                        <div class="workload-indicator" id="workloadIndicator"><span id="workloadCount">--</span></div>
+                        <div class="workload-label" id="workloadLabel">LOADING</div>
+                        <div class="workload-detail">Open + In Progress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Powered by Zara AI</div>
+    </div>
+    <script>
+        Chart.defaults.color = 'rgba(255, 255, 255, 0.8)';
+        Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
+        
+        // Initialize charts with empty data
+        const trendChart = new Chart(document.getElementById('trendChart'), {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [
+                    { label: 'Created', data: [], backgroundColor: 'rgba(116, 185, 255, 0.7)', borderColor: 'rgba(116, 185, 255, 1)', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Resolved', data: [], backgroundColor: 'rgba(0, 184, 148, 0.7)', borderColor: 'rgba(0, 184, 148, 1)', borderWidth: 2, borderRadius: 4 }
+                ]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: true, 
+                plugins: { legend: { position: 'top', labels: { padding: 20, usePointStyle: true } } }, 
+                scales: { y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.05)' } }, x: { grid: { display: false } } } 
+            }
+        });
+        
+        const statusChart = new Chart(document.getElementById('statusChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Pending Customer', 'On Hold', 'Open', 'Work in Progress'],
+                datasets: [{ 
+                    data: [0, 0, 0, 0], 
+                    backgroundColor: ['rgba(162, 155, 254, 0.8)', 'rgba(253, 203, 110, 0.8)', 'rgba(116, 185, 255, 0.8)', 'rgba(0, 184, 148, 0.8)'], 
+                    borderColor: ['rgba(162, 155, 254, 1)', 'rgba(253, 203, 110, 1)', 'rgba(116, 185, 255, 1)', 'rgba(0, 184, 148, 1)'], 
+                    borderWidth: 2 
+                }]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: true, 
+                cutout: '55%', 
+                plugins: { legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, font: { size: 11 } } } } 
+            }
+        });
+
+        async function loadData() {
+            try {
+                const resp = await fetch('data.json?t=' + Date.now());
+                if (!resp.ok) throw new Error('Failed to fetch data');
+                const data = await resp.json();
+                
+                // Update stats
+                document.getElementById('created14d').textContent = data.stats.created14d;
+                document.getElementById('resolved14d').textContent = data.stats.resolved14d;
+                document.getElementById('actionable').textContent = data.stats.actionable;
+                document.getElementById('pendingOnHold').textContent = data.stats.pendingOnHold;
+                
+                // Update timestamp
+                const updated = new Date(data.lastUpdated);
+                document.getElementById('lastUpdated').textContent = updated.toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric',
+                    hour: 'numeric', minute: '2-digit', hour12: true
+                });
+                
+                // Update trend chart
+                trendChart.data.labels = data.trend.labels;
+                trendChart.data.datasets[0].data = data.trend.created;
+                trendChart.data.datasets[1].data = data.trend.resolved;
+                trendChart.update('none');
+                
+                // Update status chart
+                statusChart.data.datasets[0].data = [
+                    data.statusBreakdown.pendingCustomer,
+                    data.statusBreakdown.onHold,
+                    data.statusBreakdown.open,
+                    data.statusBreakdown.workInProgress
+                ];
+                statusChart.update('none');
+                
+                // Update workload indicator
+                const indicator = document.getElementById('workloadIndicator');
+                const label = document.getElementById('workloadLabel');
+                document.getElementById('workloadCount').textContent = data.workload.count;
+                label.textContent = data.workload.level;
+                indicator.className = 'workload-indicator ' + data.workload.color;
+                
+            } catch (err) {
+                console.error('Error loading data:', err);
+            }
+        }
+
+        // Load immediately
+        loadData();
+        
+        // Refresh every 5 minutes
+        setInterval(loadData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
