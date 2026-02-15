@@ -94,10 +94,10 @@
         }
         .stat-card .number { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.25rem; transition: all 0.3s ease; }
         .stat-card .label { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-card.created .number { color: #74b9ff; }
-        .stat-card.resolved .number { color: #00b894; }
-        .stat-card.open .number { color: #00b894; }
-        .stat-card.pending .number { color: rgb(255, 200, 140); }
+        .stat-card.created .number { color: rgb(100, 200, 255); }
+        .stat-card.resolved .number { color: rgb(0, 230, 180); }
+        .stat-card.open .number { color: rgb(0, 230, 180); }
+        .stat-card.pending .number { color: rgb(126, 63, 46); }
         .footer { text-align: center; margin-top: 2rem; opacity: 0.5; font-size: 0.8rem; }
         .updated-time { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; }
         .refresh-indicator {
@@ -162,14 +162,14 @@
         Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
         
         // Initialize charts with empty data
-        // Bar chart: original light blue and green
+        // Bar chart: brighter blue and green
         const trendChart = new Chart(document.getElementById('trendChart'), {
             type: 'bar',
             data: {
                 labels: [],
                 datasets: [
-                    { label: 'Created', data: [], backgroundColor: 'rgba(116, 185, 255, 0.7)', borderColor: 'rgba(116, 185, 255, 1)', borderWidth: 2, borderRadius: 4 },
-                    { label: 'Resolved', data: [], backgroundColor: 'rgba(0, 184, 148, 0.7)', borderColor: 'rgba(0, 184, 148, 1)', borderWidth: 2, borderRadius: 4 }
+                    { label: 'Created', data: [], backgroundColor: 'rgba(100, 200, 255, 0.85)', borderColor: 'rgba(100, 200, 255, 1)', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Resolved', data: [], backgroundColor: 'rgba(0, 230, 180, 0.85)', borderColor: 'rgba(0, 230, 180, 1)', borderWidth: 2, borderRadius: 4 }
                 ]
             },
             options: { 
@@ -181,8 +181,8 @@
         });
         
         // Pie chart colors:
-        // Pending Customer: cream orange
-        // On Hold: fall red/orange
+        // Pending Customer: 126, 63, 46
+        // On Hold: 212, 179, 100
         // Open: gray
         // WIP: sky blue
         const statusChart = new Chart(document.getElementById('statusChart'), {
@@ -191,8 +191,8 @@
                 labels: ['Pending Customer', 'On Hold', 'Open', 'Work in Progress'],
                 datasets: [{ 
                     data: [0, 0, 0, 0], 
-                    backgroundColor: ['rgba(255, 200, 140, 0.9)', 'rgba(205, 92, 52, 0.9)', 'rgba(150, 150, 150, 0.9)', 'rgba(135, 206, 250, 0.9)'], 
-                    borderColor: ['rgba(255, 200, 140, 1)', 'rgba(205, 92, 52, 1)', 'rgba(150, 150, 150, 1)', 'rgba(135, 206, 250, 1)'], 
+                    backgroundColor: ['rgba(126, 63, 46, 0.9)', 'rgba(212, 179, 100, 0.9)', 'rgba(150, 150, 150, 0.9)', 'rgba(135, 206, 250, 0.9)'], 
+                    borderColor: ['rgba(126, 63, 46, 1)', 'rgba(212, 179, 100, 1)', 'rgba(150, 150, 150, 1)', 'rgba(135, 206, 250, 1)'], 
                     borderWidth: 2 
                 }]
             },
