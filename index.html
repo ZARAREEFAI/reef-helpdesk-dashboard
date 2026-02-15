@@ -19,19 +19,18 @@
             content: '';
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.05);
             z-index: -1;
         }
         .header { 
             text-align: center; 
             margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 20px;
             padding: 1.5rem;
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .header .logo {
             margin-bottom: 1.5rem;
@@ -49,13 +48,12 @@
         }
         .dashboard { max-width: 1600px; margin: 0 auto; }
         .chart-container {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 20px;
             padding: 1.5rem;
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .chart-title { font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.9; }
         .main-row { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
@@ -63,14 +61,13 @@
         .donut-container { flex: 1; max-width: 280px; }
         .workload-gauge {
             flex: 0 0 200px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 20px;
             padding: 1.5rem;
             text-align: center;
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .workload-gauge h3 { font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
         .workload-indicator {
@@ -88,16 +85,15 @@
         .workload-detail { font-size: 0.75rem; opacity: 0.7; }
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
         .stat-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 16px; padding: 1.5rem; text-align: center;
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
         .stat-card:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
             transform: translateY(-2px);
         }
         .stat-card .number { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.25rem; transition: all 0.3s ease; }
