@@ -19,41 +19,44 @@
             content: '';
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             z-index: -1;
         }
         .header { 
             text-align: center; 
             margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 1.5rem;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #e94560, #f39c12, #e94560);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shine 3s linear infinite;
+            color: #000000;
+            text-shadow: none;
         }
-        .header .subtitle { font-size: 1rem; opacity: 0.7; }
-        @keyframes shine { to { background-position: 200% center; } }
+        .header .subtitle { 
+            font-size: 1rem; 
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        .header .subtitle img {
+            max-height: 40px;
+            width: auto;
+        }
         .dashboard { max-width: 1600px; margin: 0 auto; }
         .chart-container {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 1.5rem;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         .chart-title { font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.9; }
         .main-row { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
@@ -61,14 +64,14 @@
         .donut-container { flex: 1; max-width: 280px; }
         .workload-gauge {
             flex: 0 0 200px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 1.5rem;
             text-align: center;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         .workload-gauge h3 { font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
         .workload-indicator {
@@ -77,33 +80,33 @@
             font-size: 2rem; font-weight: bold;
             transition: all 0.5s ease;
         }
-        .workload-indicator.green { background: linear-gradient(135deg, #00b894, #00cec9); box-shadow: 0 0 40px #00b894; }
-        .workload-indicator.yellow { background: linear-gradient(135deg, #fdcb6e, #f39c12); box-shadow: 0 0 40px #f39c12; }
-        .workload-indicator.orange { background: linear-gradient(135deg, #e17055, #d63031); box-shadow: 0 0 40px #e17055; }
-        .workload-indicator.red { background: linear-gradient(135deg, #d63031, #c0392b); box-shadow: 0 0 40px #d63031; }
+        .workload-indicator.green { background: linear-gradient(135deg, #2e5a3a, #3d7a4f); box-shadow: 0 0 40px rgba(46, 90, 58, 0.6); }
+        .workload-indicator.yellow { background: linear-gradient(135deg, #504e94, #6a68b8); box-shadow: 0 0 40px rgba(80, 78, 148, 0.6); }
+        .workload-indicator.orange { background: linear-gradient(135deg, #7a4a2e, #a06040); box-shadow: 0 0 40px rgba(122, 74, 46, 0.6); }
+        .workload-indicator.red { background: linear-gradient(135deg, #6a2e2e, #8a4040); box-shadow: 0 0 40px rgba(106, 46, 46, 0.6); }
         .workload-indicator span { color: white; }
         .workload-label { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; transition: all 0.3s ease; }
         .workload-detail { font-size: 0.75rem; opacity: 0.7; }
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
         .stat-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 16px; padding: 1.5rem; text-align: center;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         .stat-card:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
         }
         .stat-card .number { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.25rem; transition: all 0.3s ease; }
         .stat-card .label { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-card.created .number { color: #74b9ff; }
-        .stat-card.resolved .number { color: #00b894; }
-        .stat-card.open .number { color: #fdcb6e; }
-        .stat-card.pending .number { color: #a29bfe; }
+        .stat-card.created .number { color: #1a4a6e; }
+        .stat-card.resolved .number { color: #2e5a3a; }
+        .stat-card.open .number { color: #2e5a3a; }
+        .stat-card.pending .number { color: #504e94; }
         .footer { text-align: center; margin-top: 2rem; opacity: 0.5; font-size: 0.8rem; }
         .updated-time { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; }
         .refresh-indicator {
@@ -111,7 +114,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #00b894;
+            background: #2e5a3a;
             margin-right: 8px;
             animation: pulse 2s infinite;
         }
@@ -133,8 +136,8 @@
 <body>
     <div class="dashboard">
         <div class="header">
-            <h1>⚡ IT Helpdesk Dashboard</h1>
-            <p class="subtitle">Reef Capital Partners</p>
+            <h1>IT Helpdesk Dashboard</h1>
+            <p class="subtitle"><img src="reef-logo.jpg" alt="Reef Capital Partners"></p>
             <p class="updated-time"><span class="refresh-indicator"></span>Last updated: <span id="lastUpdated">Loading...</span></p>
         </div>
         <div class="stats-row">
@@ -145,11 +148,11 @@
         </div>
         <div class="main-row">
             <div class="chart-container">
-                <h2 class="chart-title">📈 Tickets Opened vs Resolved (Past 2 Weeks)</h2>
+                <h2 class="chart-title">Tickets Opened vs Resolved (Past 2 Weeks)</h2>
                 <canvas id="trendChart" height="85"></canvas>
             </div>
             <div class="chart-container">
-                <h2 class="chart-title">📊 Current Status</h2>
+                <h2 class="chart-title">Current Status</h2>
                 <div class="status-section">
                     <div class="donut-container"><canvas id="statusChart"></canvas></div>
                     <div class="workload-gauge">
@@ -168,13 +171,14 @@
         Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
         
         // Initialize charts with empty data
+        // Bar chart: darker blue (#1a4a6e) and forest green (#2e5a3a)
         const trendChart = new Chart(document.getElementById('trendChart'), {
             type: 'bar',
             data: {
                 labels: [],
                 datasets: [
-                    { label: 'Created', data: [], backgroundColor: 'rgba(116, 185, 255, 0.7)', borderColor: 'rgba(116, 185, 255, 1)', borderWidth: 2, borderRadius: 4 },
-                    { label: 'Resolved', data: [], backgroundColor: 'rgba(0, 184, 148, 0.7)', borderColor: 'rgba(0, 184, 148, 1)', borderWidth: 2, borderRadius: 4 }
+                    { label: 'Created', data: [], backgroundColor: 'rgba(26, 74, 110, 0.8)', borderColor: 'rgba(26, 74, 110, 1)', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Resolved', data: [], backgroundColor: 'rgba(46, 90, 58, 0.8)', borderColor: 'rgba(46, 90, 58, 1)', borderWidth: 2, borderRadius: 4 }
                 ]
             },
             options: { 
@@ -185,14 +189,19 @@
             }
         });
         
+        // Pie chart colors (Generic RGB):
+        // On Hold: 46, 46, 82 = #2e2e52
+        // Pending Customer: 80, 78, 148 = #504e94
+        // Open: 88, 88, 88 = #585858
+        // WIP: 186, 188, 255 = #babcff
         const statusChart = new Chart(document.getElementById('statusChart'), {
             type: 'doughnut',
             data: {
                 labels: ['Pending Customer', 'On Hold', 'Open', 'Work in Progress'],
                 datasets: [{ 
                     data: [0, 0, 0, 0], 
-                    backgroundColor: ['rgba(162, 155, 254, 0.8)', 'rgba(253, 203, 110, 0.8)', 'rgba(116, 185, 255, 0.8)', 'rgba(0, 184, 148, 0.8)'], 
-                    borderColor: ['rgba(162, 155, 254, 1)', 'rgba(253, 203, 110, 1)', 'rgba(116, 185, 255, 1)', 'rgba(0, 184, 148, 1)'], 
+                    backgroundColor: ['rgba(80, 78, 148, 0.9)', 'rgba(46, 46, 82, 0.9)', 'rgba(88, 88, 88, 0.9)', 'rgba(186, 188, 255, 0.9)'], 
+                    borderColor: ['rgba(80, 78, 148, 1)', 'rgba(46, 46, 82, 1)', 'rgba(88, 88, 88, 1)', 'rgba(186, 188, 255, 1)'], 
                     borderWidth: 2 
                 }]
             },
