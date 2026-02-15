@@ -80,10 +80,10 @@
             font-size: 2rem; font-weight: bold;
             transition: all 0.5s ease;
         }
-        .workload-indicator.green { background: linear-gradient(135deg, #2e5a3a, #3d7a4f); box-shadow: 0 0 40px rgba(46, 90, 58, 0.6); }
-        .workload-indicator.yellow { background: linear-gradient(135deg, #504e94, #6a68b8); box-shadow: 0 0 40px rgba(80, 78, 148, 0.6); }
-        .workload-indicator.orange { background: linear-gradient(135deg, #7a4a2e, #a06040); box-shadow: 0 0 40px rgba(122, 74, 46, 0.6); }
-        .workload-indicator.red { background: linear-gradient(135deg, #6a2e2e, #8a4040); box-shadow: 0 0 40px rgba(106, 46, 46, 0.6); }
+        .workload-indicator.green { background: linear-gradient(135deg, #3c8c50, #5aaa6e); box-shadow: 0 0 40px rgba(60, 140, 80, 0.6); }
+        .workload-indicator.yellow { background: linear-gradient(135deg, #8280be, #a09ed8); box-shadow: 0 0 40px rgba(130, 128, 190, 0.6); }
+        .workload-indicator.orange { background: linear-gradient(135deg, #b87333, #d4915a); box-shadow: 0 0 40px rgba(184, 115, 51, 0.6); }
+        .workload-indicator.red { background: linear-gradient(135deg, #c45c5c, #d88080); box-shadow: 0 0 40px rgba(196, 92, 92, 0.6); }
         .workload-indicator span { color: white; }
         .workload-label { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; transition: all 0.3s ease; }
         .workload-detail { font-size: 0.75rem; opacity: 0.7; }
@@ -103,10 +103,10 @@
         }
         .stat-card .number { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.25rem; transition: all 0.3s ease; }
         .stat-card .label { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-card.created .number { color: #1a4a6e; }
-        .stat-card.resolved .number { color: #2e5a3a; }
-        .stat-card.open .number { color: #2e5a3a; }
-        .stat-card.pending .number { color: #504e94; }
+        .stat-card.created .number { color: #4682b4; }
+        .stat-card.resolved .number { color: #3c8c50; }
+        .stat-card.open .number { color: #3c8c50; }
+        .stat-card.pending .number { color: #8280be; }
         .footer { text-align: center; margin-top: 2rem; opacity: 0.5; font-size: 0.8rem; }
         .updated-time { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; }
         .refresh-indicator {
@@ -114,7 +114,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #2e5a3a;
+            background: #3c8c50;
             margin-right: 8px;
             animation: pulse 2s infinite;
         }
@@ -137,7 +137,7 @@
     <div class="dashboard">
         <div class="header">
             <h1>IT Helpdesk Dashboard</h1>
-            <p class="subtitle"><img src="reef-logo.jpg" alt="Reef Capital Partners"></p>
+            <p class="subtitle"><img src="reef-logo.png" alt="Reef Capital Partners"></p>
             <p class="updated-time"><span class="refresh-indicator"></span>Last updated: <span id="lastUpdated">Loading...</span></p>
         </div>
         <div class="stats-row">
@@ -171,14 +171,14 @@
         Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
         
         // Initialize charts with empty data
-        // Bar chart: darker blue (#1a4a6e) and forest green (#2e5a3a)
+        // Bar chart: lighter blue and forest green
         const trendChart = new Chart(document.getElementById('trendChart'), {
             type: 'bar',
             data: {
                 labels: [],
                 datasets: [
-                    { label: 'Created', data: [], backgroundColor: 'rgba(26, 74, 110, 0.8)', borderColor: 'rgba(26, 74, 110, 1)', borderWidth: 2, borderRadius: 4 },
-                    { label: 'Resolved', data: [], backgroundColor: 'rgba(46, 90, 58, 0.8)', borderColor: 'rgba(46, 90, 58, 1)', borderWidth: 2, borderRadius: 4 }
+                    { label: 'Created', data: [], backgroundColor: 'rgba(70, 130, 180, 0.85)', borderColor: 'rgba(70, 130, 180, 1)', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Resolved', data: [], backgroundColor: 'rgba(60, 140, 80, 0.85)', borderColor: 'rgba(60, 140, 80, 1)', borderWidth: 2, borderRadius: 4 }
                 ]
             },
             options: { 
@@ -189,19 +189,19 @@
             }
         });
         
-        // Pie chart colors (Generic RGB):
-        // On Hold: 46, 46, 82 = #2e2e52
-        // Pending Customer: 80, 78, 148 = #504e94
-        // Open: 88, 88, 88 = #585858
-        // WIP: 186, 188, 255 = #babcff
+        // Pie chart colors (lightened purple/blue palette):
+        // On Hold: 90, 90, 150
+        // Pending Customer: 130, 128, 190
+        // Open: 150, 150, 150
+        // WIP: 186, 188, 255
         const statusChart = new Chart(document.getElementById('statusChart'), {
             type: 'doughnut',
             data: {
                 labels: ['Pending Customer', 'On Hold', 'Open', 'Work in Progress'],
                 datasets: [{ 
                     data: [0, 0, 0, 0], 
-                    backgroundColor: ['rgba(80, 78, 148, 0.9)', 'rgba(46, 46, 82, 0.9)', 'rgba(88, 88, 88, 0.9)', 'rgba(186, 188, 255, 0.9)'], 
-                    borderColor: ['rgba(80, 78, 148, 1)', 'rgba(46, 46, 82, 1)', 'rgba(88, 88, 88, 1)', 'rgba(186, 188, 255, 1)'], 
+                    backgroundColor: ['rgba(130, 128, 190, 0.9)', 'rgba(90, 90, 150, 0.9)', 'rgba(150, 150, 150, 0.9)', 'rgba(186, 188, 255, 0.9)'], 
+                    borderColor: ['rgba(130, 128, 190, 1)', 'rgba(90, 90, 150, 1)', 'rgba(150, 150, 150, 1)', 'rgba(186, 188, 255, 1)'], 
                     borderWidth: 2 
                 }]
             },
