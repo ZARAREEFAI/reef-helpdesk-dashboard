@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-02-25T20:45:01Z",
+  "lastUpdated": "2026-02-25T21:00:00Z",
   "stats": {
     "created14d": 169,
     "resolved14d": 164,
-    "actionable": 12,
+    "actionable": 11,
     "pendingOnHold": 47
   },
   "trend": {
@@ -14,11 +14,11 @@
   "statusBreakdown": {
     "pendingCustomer": 20,
     "onHold": 27,
-    "open": 7,
-    "workInProgress": 5
+    "open": 8,
+    "workInProgress": 3
   },
   "workload": {
-    "count": 12,
+    "count": 11,
     "level": "ELEVATED",
     "color": "yellow"
   }
