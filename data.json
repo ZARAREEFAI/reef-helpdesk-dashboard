@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-27T06:45:00Z",
+  "lastUpdated": "2026-02-27T07:00:00Z",
   "stats": {
     "created14d": 0,
     "resolved14d": 0,
@@ -7,7 +7,7 @@
     "pendingOnHold": 0
   },
   "trend": {
-    "labels": ["Feb 13", "Feb 14", "Feb 15", "Feb 16", "Feb 17", "Feb 18", "Feb 19", "Feb 20", "Feb 21", "Feb 22", "Feb 23", "Feb 24", "Feb 25", "Feb 26"],
+    "labels": ["Feb 14", "Feb 15", "Feb 16", "Feb 17", "Feb 18", "Feb 19", "Feb 20", "Feb 21", "Feb 22", "Feb 23", "Feb 24", "Feb 25", "Feb 26", "Feb 27"],
     "created": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     "resolved": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
