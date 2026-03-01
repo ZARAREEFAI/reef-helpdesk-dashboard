@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-01T07:45:00Z",
+  "lastUpdated": "2026-03-01T08:00:00Z",
   "stats": {
     "created14d": 148,
     "resolved14d": 148,
@@ -8,7 +8,7 @@
   },
   "trend": {
     "labels": ["Feb 16", "Feb 17", "Feb 18", "Feb 19", "Feb 20", "Feb 21", "Feb 22", "Feb 23", "Feb 24", "Feb 25", "Feb 26", "Feb 27", "Feb 28", "Mar 1"],
-    "created": [3, 16, 12, 17, 13, 4, 1, 26, 16, 13, 10, 10, 3, 1],
+    "created": [3, 16, 12, 17, 13, 4, 1, 26, 16, 13, 10, 10, 3, 0],
     "resolved": [3, 20, 13, 8, 12, 5, 5, 18, 17, 12, 13, 10, 8, 0]
   },
   "statusBreakdown": {
