@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-03-04T16:15:00Z",
+  "lastUpdated": "2026-03-04T16:30:00Z",
   "stats": {
-    "created14d": 168,
-    "resolved14d": 157,
-    "actionable": 19,
+    "created14d": 170,
+    "resolved14d": 158,
+    "actionable": 20,
     "pendingOnHold": 40
   },
   "trend": {
     "labels": ["Feb 19", "Feb 20", "Feb 21", "Feb 22", "Feb 23", "Feb 24", "Feb 25", "Feb 26", "Feb 27", "Feb 28", "Mar 1", "Mar 2", "Mar 3", "Mar 4"],
-    "created": [17, 13, 4, 1, 26, 16, 13, 10, 10, 1, 4, 22, 17, 2],
-    "resolved": [8, 12, 5, 5, 18, 17, 12, 13, 10, 8, 5, 20, 14, 1]
+    "created": [17, 13, 4, 1, 26, 16, 13, 10, 10, 1, 4, 22, 17, 4],
+    "resolved": [8, 12, 5, 5, 18, 17, 12, 13, 10, 8, 5, 20, 14, 2]
   },
   "statusBreakdown": {
     "pendingCustomer": 24,
     "onHold": 16,
     "open": 14,
-    "workInProgress": 5
+    "workInProgress": 6
   },
   "workload": {
-    "count": 19,
+    "count": 20,
     "level": "CRITICAL",
     "color": "red"
   }
