@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-03-11T15:00:00Z",
+  "lastUpdated": "2026-03-11T15:15:00Z",
   "stats": {
     "created14d": 166,
     "resolved14d": 158,
-    "actionable": 18,
-    "pendingOnHold": 48
+    "actionable": 17,
+    "pendingOnHold": 49
   },
   "trend": {
     "labels": ["Feb 26", "Feb 27", "Feb 28", "Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11"],
@@ -13,12 +13,12 @@
   },
   "statusBreakdown": {
     "pendingCustomer": 30,
-    "onHold": 18,
-    "open": 14,
+    "onHold": 19,
+    "open": 13,
     "workInProgress": 4
   },
   "workload": {
-    "count": 18,
+    "count": 17,
     "level": "HIGH",
     "color": "orange"
   }
