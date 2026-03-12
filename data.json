@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-03-12T15:00:00Z",
+  "lastUpdated": "2026-03-12T15:15:00Z",
   "stats": {
     "created14d": 169,
-    "resolved14d": 163,
+    "resolved14d": 164,
     "actionable": 13,
     "pendingOnHold": 50
   },
   "trend": {
     "labels": ["Feb 27", "Feb 28", "Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12"],
-    "created": [10, 1, 3, 20, 17, 14, 18, 10, 1, 1, 19, 24, 20, 1],
-    "resolved": [10, 8, 5, 20, 13, 14, 16, 8, 4, 2, 14, 20, 16, 7]
+    "created": [10, 1, 3, 20, 17, 14, 18, 10, 1, 1, 19, 24, 20, 2],
+    "resolved": [10, 8, 5, 20, 13, 14, 16, 8, 4, 2, 14, 20, 16, 8]
   },
   "statusBreakdown": {
     "pendingCustomer": 32,
